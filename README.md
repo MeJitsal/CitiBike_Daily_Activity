@@ -1,4 +1,4 @@
-Creating a daily activity chart based on public transportation data in NYC
+Creating a daily activity chart based on public transportation data in NYC to visualize the effects of COVID-19 social distancing policies on public transportation use 
 
 
 Note: This project originated as a component of an academic assignment and has since evolved for further development and exploration.
