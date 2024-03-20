@@ -55,12 +55,11 @@ d %>%
   )
 
 #rename columns to remove 'date' and 'change
-
 d <- d %>%
   select( contains(c('date', 'change')) ) %>%
   rename_with(~ str_remove_all(.x, '_change')) %>%
   pivot_longer(
-    cols = c('subway', 'bus', 'lirr', 'mta', 'access_ride', 'bridge_tunnel'), #can also do (cols=-date) include all BUT DATE
+    cols = -c('date') #include all BUT DATE
     names_to = 'transportation_type',
     values_to = 'change'
   ) %>%
@@ -71,7 +70,7 @@ d <- d %>%
 #creating line graph of daily activity change
 d %>%
   #select most used transportation
-  filter(transportation_type %in% c('bridge_tunnel', 'bus', 'subway', 'lirr', 'mta')) %>% # can also do transportation_type != 'access_ride'
+  filter(transportation_type !='access_ride')) %>% 
   
   ggplot(aes(x = date, y = change, color = transportation_type)) +
   geom_line()+
